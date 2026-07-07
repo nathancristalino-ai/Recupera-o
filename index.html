@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
@@ -8,13 +9,37 @@
 <body>
 
     <div class="game-container">
-        <h2 id="fase-titulo">Fase 1</h2> 
         
-        <p id="pergunta-texto">Carregando pergunta...</p>
-        
-        <div id="opcoes-container" class="options-grid"></div>
-        
-        <p id="mensagem-feedback" class="feedback"></p>
+        <div id="fase1" class="fase ativa">
+            <h2>Fase 1</h2>
+            <p>Qual é o principal objetivo do Projeto Agrinho?</p>
+            <div class="options-grid">
+                <button onclick="respostaErrada(this)">Estimular o comércio</button>
+                <button onclick="proximaFase(1, 2)">Educação e Cidadania</button>
+                <button onclick="respostaErrada(this)">Plantar apenas árvores</button>
+            </div>
+        </div>
+
+        <div id="fase2" class="fase">
+            <h2>Fase 2</h2>
+            <p>Qual tema é essencial nas ações do Agrinho?</p>
+            <div class="options-grid">
+                <button onclick="proximaFase(2, 3)">Sustentabilidade</button>
+                <button onclick="respostaErrada(this)">Exploração Espacial</button>
+                <button onclick="respostaErrada(this)">Culinária de Outros Países</button>
+            </div>
+        </div>
+
+        <div id="fase3" class="fase">
+            <h2>Parabéns!</h2>
+            <p>Você concluiu o quiz do Agrinho com sucesso!</p>
+            <div class="options-grid">
+                <button onclick="reiniciarJogo()">Jogar Novamente</button>
+            </div>
+        </div>
+
+        <p id="feedback-erro" class="feedback-erro"></p>
+
     </div>
 
     <script src="script.js"></script>
