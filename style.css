@@ -1,0 +1,77 @@
+/* Configuração Geral */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #e8f5e9; /* Verde bem claro, tema Agrinho */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    background-color: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 500px;
+    width: 100%;
+}
+
+h1 {
+    color: #2e7d32; /* Verde escuro */
+}
+
+#pergunta {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Estilização dos Botões */
+.botoes-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.btn-resposta {
+    background-color: #4caf50; /* Verde padrão */
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    font-size: 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+.btn-resposta:hover {
+    background-color: #45a049;
+    transform: scale(1.02);
+}
+
+/* Classes que o JavaScript vai aplicar dinamicamente */
+.btn-correto {
+    background-color: #2e7d32 !important; /* Verde escuro para acerto */
+}
+
+.btn-errado {
+    background-color: #d32f2f !important; /* Vermelho para erro */
+}
+
+/* Botão Reiniciar */
+#btn-reiniciar {
+    margin-top: 20px;
+    background-color: #1976d2;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#btn-reiniciar:hover {
+    background-color: #1565c0;
+}
