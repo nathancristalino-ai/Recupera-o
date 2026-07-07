@@ -1,48 +1,100 @@
-// Garante que o código só rode após o HTML carregar
-document.addEventListener("DOMContentLoaded", () => {
-    
-    // Seleciona todos os botões de resposta e o botão de reiniciar
-    const botoesResposta = document.querySelectorAll(".btn-resposta");
-    const botaoReiniciar = document.getElementById("btn-reiniciar");
+// Lista de fases do jogo (perguntas, opções e a resposta certa)
+const fases = [
+    {
+        pergunta: "Qual é o principal objetivo do Projeto Agrinho?",
+        opcoes: [
+            "Estimular o comércio local",
+            "Levar educação e cidadania para o meio rural",
+            "Criar novos jogos de videogame",
+            "Apenas plantar árvores"
+        ],
+        correta: 1 // Índice da resposta certa (começa do 0, então 1 é a segunda opção)
+    },
+    {
+        pergunta: "Qual tema costuma ser muito importante nas ações do Agrinho?",
+        opcoes: [
+            "Sustentabilidade e meio ambiente",
+            "Exploração espacial",
+            "História do cinema antigo",
+            "Culinária internacional"
+        ],
+        correta: 0 // Primeira opção é a correta
+    },
+    {
+        pergunta: "Parabéns! Você concluiu o quiz sobre o Agrinho!",
+        opcoes: ["Jogar Novamente"],
+        correta: 0
+    }
+];
 
-    // Adiciona o evento de clique para cada botão de resposta
-    botoesResposta.forEach(botao => {
-        botao.addEventListener("click", (evento) => {
-            const botaoClicado = evento.target;
-            
-            // Verifica se o atributo 'data-correta' é igual a "true"
-            const acertou = botaoClicado.getAttribute("data-correta") === "true";
+let faseAtual = 0;
 
-            // Desativa todos os botões para o jogador não clicar em mais de um
-            botoesResposta.forEach(btn => btn.disabled = true);
+// Elementos do HTML que vamos modificar
+const faseTitulo = document.getElementById("fase-titulo");
+const perguntaTexto = document.getElementById("pergunta-texto");
+const opcoesContainer = document.getElementById("opcoes-container");
+const mensagemFeedback = document.getElementById("mensagem-feedback");
 
-            if (acertou) {
-                botaoClicado.classList.add("btn-correto");
-                alert("Parabéns! Você acertou! A rotação de culturas protege o solo. 🌾");
-            } else {
-                botaoClicado.classList.add("btn-errado");
-                alert("Ah que pena, resposta incorreta! Tente novamente. 🍂");
-                
-                // Opcional: Mostra qual era a resposta certa mesmo se ele errou
-                botoesResposta.forEach(btn => {
-                    if (btn.getAttribute("data-correta") === "true") {
-                        btn.classList.add("btn-correto");
-                    }
-                });
-            }
+// Função para carregar uma fase na tela
+function carregarFase() {
+    // Limpa feedbacks antigos
+    mensagemFeedback.textContent = "";
+    opcoesContainer.innerHTML = "";
 
-            // Exibe o botão de reiniciar após a resposta
-            botaoReiniciar.style.display = "inline-block";
-        });
+    const dadosDaFase = fases[faseAtual];
+
+    // Se for a última fase (tela de fim)
+    if (faseAtual === fases.length - 1) {
+        faseTitulo.textContent = "Fim de Jogo!";
+        perguntaTexto.textContent = dadosDaFase.pergunta;
+        
+        const btnReiniciar = document.createElement("button");
+        btnReiniciar.textContent = dadosDaFase.opcoes[0];
+        btnReiniciar.onclick = reiniciarJogo;
+        opcoesContainer.appendChild(btnReiniciar);
+        return;
+    }
+
+    // Atualiza os textos da tela
+    faseTitulo.textContent = `Fase ${faseAtual + 1}`;
+    perguntaTexto.textContent = dadosDaFase.pergunta;
+
+    // Cria os botões das alternativas
+    dadosDaFase.opcoes.forEach((opcao, indice) => {
+        const botao = document.createElement("button");
+        botao.textContent = opcao;
+        
+        // Define o que acontece ao clicar no botão
+        botao.onclick = () => verificarResposta(indice);
+        
+        opcoesContainer.appendChild(botao);
     });
+}
 
-    // Configura o botão de reiniciar para voltar ao estado original
-    botaoReiniciar.addEventListener("click", () => {
-        botoesResposta.forEach(btn => {
-            btn.disabled = false;
-            btn.classList.remove("btn-correto", "btn-errado");
-        });
-        botaoReiniciar.style.display = "none";
-    });
+// Função que checa se o usuário acertou
+function verificarResposta(indiceSelecionado) {
+    const dadosDaFase = fases[faseAtual];
 
-});
+    if (indiceSelecionado === dadosDaFase.correta) {
+        mensagemFeedback.className = "feedback correto";
+        mensagemFeedback.textContent = "Resposta Correta! Avançando...";
+        
+        // Espera 1.2 segundos para o jogador ver que acertou e muda de fase
+        setTimeout(() => {
+            faseAtual++;
+            carregarFase();
+        }, 1200);
+    } else {
+        mensagemFeedback.className = "feedback errado";
+        mensagemFeedback.textContent = "Resposta incorreta. Tente novamente!";
+    }
+}
+
+// Função para recomeçar o quiz do zero
+function reiniciarJogo() {
+    faseAtual = 0;
+    carregarFase();
+}
+
+// Inicializa o jogo assim que a página abre
+carregarFase();
