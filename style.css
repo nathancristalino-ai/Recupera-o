@@ -5,68 +5,114 @@
 }
 
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: #e8f5e9;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f1f8e9; 
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
+    padding: 20px;
 }
 
 .game-container {
-    background-color: white;
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+    padding: 35px 25px;
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(46, 125, 50, 0.15);
     text-align: center;
-    max-width: 500px;
-    width: 90%; /* Melhorado para responsividade em celulares */
+    max-width: 550px;
+    width: 100%;
+    border-top: 6px solid #1b5e20;
 }
 
-/* ESCONDE TODAS AS FASES POR PADRÃO */
 .fase {
     display: none;
 }
 
-/* MOSTRA APENAS A FASE QUE TIVER A CLASSE ATIVA */
 .fase.ativa {
     display: block;
 }
 
-h2 {
-    color: #2e7d32;
+.fase-badge {
+    display: inline-block;
+    background-color: #c8e6c9;
+    color: #1b5e20;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 4px 12px;
+    border-radius: 20px;
     margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+h2 {
+    color: #1b5e20;
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.pergunta-texto {
+    color: #4a4a4a;
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 25px;
 }
 
 .options-grid {
     display: flex;
     flex-direction: column;
     gap: 12px;
-    margin-top: 20px;
 }
 
 button {
-    background-color: #4caf50;
-    color: white;
+    background-color: #2e7d32;
+    color: #ffffff;
     border: none;
-    padding: 12px 20px;
-    font-size: 16px;
+    padding: 14px 20px;
+    font-size: 15px;
+    font-weight: 600;
     border-radius: 8px;
     cursor: pointer;
-    transition: background-color 0.2s, transform 0.1s;
+    text-align: left;
+    transition: background-color 0.2s, transform 0.1s, box-shadow 0.2s;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
 
 button:hover {
-    background-color: #45a049;
+    background-color: #1b5e20;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
 button:active {
-    transform: scale(0.98);
+    transform: scale(0.99);
+}
+
+.btn-reiniciar {
+    text-align: center;
+    background-color: #1b5e20;
+}
+
+.btn-reiniciar:hover {
+    background-color: #0d3c0a;
+}
+
+.trofeu-icon {
+    font-size: 60px;
+    margin-bottom: 15px;
+}
+
+.feedback-container {
+    margin-top: 20px;
+    min-height: 24px;
 }
 
 .feedback-erro {
     color: #d32f2f;
     font-weight: bold;
-    margin-top: 15px;
-    min-height: 20px; /* Evita que o container mude de tamanho de elemento surpresa */
+    font-size: 14px;
+    display: none;
+}
+
+.feedback-erro.visivel {
+    display: block;
 }
