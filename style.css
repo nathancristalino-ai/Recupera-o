@@ -1,7 +1,6 @@
-/* Configuração Geral */
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #e8f5e9; /* Verde bem claro, tema Agrinho */
+    background-color: #e8f5e9; /* Verde claro de fundo */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -9,69 +8,56 @@ body {
     margin: 0;
 }
 
-.container {
+.game-container {
     background-color: white;
     padding: 30px;
-    border-radius: 15px;
+    border-radius: 12px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     text-align: center;
     max-width: 500px;
     width: 100%;
 }
 
-h1 {
+h2 {
     color: #2e7d32; /* Verde escuro */
 }
 
-#pergunta {
-    font-size: 1.2rem;
-    margin-bottom: 20px;
-    color: #333;
-}
-
-/* Estilização dos Botões */
-.botoes-container {
+.options-grid {
     display: flex;
     flex-direction: column;
     gap: 12px;
+    margin-top: 20px;
 }
 
-.btn-resposta {
-    background-color: #4caf50; /* Verde padrão */
+button {
+    background-color: #4caf50;
     color: white;
     border: none;
     padding: 12px 20px;
-    font-size: 1rem;
+    font-size: 16px;
     border-radius: 8px;
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.1s ease;
+    transition: background 0.2s, transform 0.1s;
 }
 
-.btn-resposta:hover {
+button:hover {
     background-color: #45a049;
-    transform: scale(1.02);
 }
 
-/* Classes que o JavaScript vai aplicar dinamicamente */
-.btn-correto {
-    background-color: #2e7d32 !important; /* Verde escuro para acerto */
+button:active {
+    transform: scale(0.98);
 }
 
-.btn-errado {
-    background-color: #d32f2f !important; /* Vermelho para erro */
+.feedback {
+    margin-top: 15px;
+    font-weight: bold;
+    min-height: 24px;
 }
 
-/* Botão Reiniciar */
-#btn-reiniciar {
-    margin-top: 20px;
-    background-color: #1976d2;
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    border-radius: 5px;
-    cursor: pointer;
+.feedback.correto {
+    color: #2e7d32;
 }
 
-#btn-reiniciar:hover {
-    background-color: #1565c0;
+.feedback.errado {
+    color: #d32f2f;
 }
