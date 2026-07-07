@@ -1,50 +1,51 @@
 const feedbackErro = document.getElementById("feedback-erro");
 
-// Função chamada quando o jogador clica na resposta CORRETA
+// Avança o jogo limpando erros antigos
 function proximaFase(faseAtual, faseSeguinte) {
-    // Limpa qualquer mensagem de erro acumulada da fase anterior
     if (feedbackErro) {
         feedbackErro.textContent = "";
+        feedbackErro.classList.remove("visivel");
     }
 
     const divAtual = document.getElementById(`fase${faseAtual}`);
     const divProxima = document.getElementById(`fase${faseSeguinte}`);
 
-    // Verifica se os elementos realmente existem na tela antes de aplicar as classes
     if (divAtual && divProxima) {
         divAtual.classList.remove("ativa");
         divProxima.classList.add("ativa");
     }
 }
 
-// Função chamada quando o jogador clica em uma resposta ERRADA
+// Sinaliza erro com animação visual no botão
 function respostaErrada(botaoClicado) {
     if (feedbackErro) {
-        feedbackErro.textContent = "Resposta incorreta! Tente novamente.";
+        feedbackErro.textContent = "Essa alternativa prejudica o avanço sustentável. Tente outra!";
+        feedbackErro.classList.add("visivel");
     }
     
-    // Feedback visual temporário no botão selecionado
     if (botaoClicado) {
         botaoClicado.style.backgroundColor = "#d32f2f";
+        botaoClicado.style.transform = "translateX(4px)";
+        
         setTimeout(() => {
-            botaoClicado.style.backgroundColor = "#4caf50";
-        }, 500);
+            botaoClicado.style.backgroundColor = "#2e7d32";
+            botaoClicado.style.transform = "none";
+        }, 400);
     }
 }
 
-// Função para voltar para a primeira fase ao terminar o jogo
+// Reinicia o fluxo jogando o usuário de volta para o primeiro bloco
 function reiniciarJogo() {
     if (feedbackErro) {
         feedbackErro.textContent = "";
+        feedbackErro.classList.remove("visivel");
     }
     
-    // Busca a fase que está ativa atualmente para escondê-la
     const faseAtivaAtual = document.querySelector(".fase.ativa");
     if (faseAtivaAtual) {
         faseAtivaAtual.classList.remove("ativa");
     }
     
-    // Força a volta segura para a primeira fase
     const primeiraFase = document.getElementById("fase1");
     if (primeiraFase) {
         primeiraFase.classList.add("ativa");
