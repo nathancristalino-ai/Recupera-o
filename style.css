@@ -1,6 +1,6 @@
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #e8f5e9; /* Verde claro de fundo */
+    background-color: #e8f5e9;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -18,8 +18,19 @@ body {
     width: 100%;
 }
 
+/* ESCONDE TODAS AS FASES POR PADRÃO */
+.fase {
+    display: none;
+}
+
+/* MOSTRA APENAS A FASE QUE TIVER A CLASSE ATIVA */
+.fase.ativa {
+    display: block;
+}
+
 h2 {
-    color: #2e7d32; /* Verde escuro */
+    color: #2e7d32;
+    margin-top: 0;
 }
 
 .options-grid {
@@ -37,27 +48,16 @@ button {
     font-size: 16px;
     border-radius: 8px;
     cursor: pointer;
-    transition: background 0.2s, transform 0.1s;
+    transition: background 0.2s;
 }
 
 button:hover {
     background-color: #45a049;
 }
 
-button:active {
-    transform: scale(0.98);
-}
-
-.feedback {
-    margin-top: 15px;
-    font-weight: bold;
-    min-height: 24px;
-}
-
-.feedback.correto {
-    color: #2e7d32;
-}
-
-.feedback.errado {
+.feedback-erro {
     color: #d32f2f;
+    font-weight: bold;
+    margin-top: 15px;
+    min-height: 20px;
 }
