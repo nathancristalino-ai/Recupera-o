@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jogo do Agrinho</title>
+    <title>Quiz: Agro Forte e Sustentável</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -11,34 +11,50 @@
     <div class="game-container">
         
         <div id="fase1" class="fase ativa">
-            <h2>Fase 1</h2>
-            <p>Qual é o principal objetivo do Projeto Agrinho?</p>
+            <span class="fase-badge">Fase 1 de 3</span>
+            <h2>Tecnologia e Produtividade</h2>
+            <p class="pergunta-texto">Como a tecnologia no "Agro Forte" ajuda a produzir mais alimentos sem precisar desmatar novas áreas?</p>
             <div class="options-grid">
-                <button type="button" onclick="respostaErrada(this)">Estimular o comércio</button>
-                <button type="button" onclick="proximaFase(1, 2)">Educação e Cidadania</button>
-                <button type="button" onclick="respostaErrada(this)">Plantar apenas árvores</button>
+                <button type="button" onclick="respostaErrada(this)">Aumentando o uso de água de forma descontrolada em toda a plantação.</button>
+                <button type="button" onclick="proximaFase(1, 2)">Usando drones, GPS e análise de solo para aumentar a eficiência na mesma terra.</button>
+                <button type="button" onclick="respostaErrada(this)">Abandonando o uso de máquinas modernas e voltando ao cultivo manual antigo.</button>
             </div>
         </div>
 
         <div id="fase2" class="fase">
-            <h2>Fase 2</h2>
-            <p>Qual tema é essencial nas ações do Agrinho?</p>
+            <span class="fase-badge">Fase 2 de 3</span>
+            <h2>Preservação dos Recursos</h2>
+            <p class="pergunta-texto">Qual prática une a força da produção agrícola com a sustentabilidade no manejo da água?</p>
             <div class="options-grid">
-                <button type="button" onclick="proximaFase(2, 3)">Sustentabilidade</button>
-                <button type="button" onclick="respostaErrada(this)">Exploração Espacial</button>
-                <button type="button" onclick="respostaErrada(this)">Culinária de Outros Países</button>
+                <button type="button" onclick="respostaErrada(this)">Deixar a água correndo livremente para inundar o solo o dia todo.</button>
+                <button type="button" onclick="respostaErrada(this)">Utilizar poços artesianos sem nenhuma autorização ou monitoramento técnico.</button>
+                <button type="button" onclick="proximaFase(2, 3)">Implementar a irrigação por gotejamento, que evita o desperdício de água.</button>
             </div>
         </div>
 
         <div id="fase3" class="fase">
-            <h2>Parabéns!</h2>
-            <p>Você concluiu o quiz do Agrinho com sucesso!</p>
+            <span class="fase-badge">Fase 3 de 3</span>
+            <h2>O Futuro da Agricultura</h2>
+            <p class="pergunta-texto">O que caracteriza o conceito de ILPF (Integração Lavoura-Pecuária-Floresta), um dos pilares do agro sustentável?</p>
             <div class="options-grid">
-                <button type="button" onclick="reiniciarJogo()">Jogar Novamente</button>
+                <button type="button" onclick="proximaFase(3, 4)">Produzir grãos, carne e madeira na mesma área, otimizando o solo e capturando carbono.</button>
+                <button type="button" onclick="respostaErrada(this)">Dividir a fazenda em três partes completamente isoladas e sem nenhuma troca entre elas.</button>
+                <button type="button" onclick="respostaErrada(this)">Substituir toda a vegetação nativa por apenas um tipo de árvore exótica.</button>
             </div>
         </div>
 
-        <p id="feedback-erro" class="feedback-erro"></p>
+        <div id="fase4" class="fase">
+            <div class="trofeu-icon">🌱</div>
+            <h2>Missão Cumprida!</h2>
+            <p class="pergunta-texto">Você provou que entende tudo sobre um Agro Forte e Sustentável!</p>
+            <div class="options-grid">
+                <button type="button" class="btn-reiniciar" onclick="reiniciarJogo()">Jogar Novamente</button>
+            </div>
+        </div>
+
+        <div class="feedback-container">
+            <p id="feedback-erro" class="feedback-erro"></p>
+        </div>
 
     </div>
 
